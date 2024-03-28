@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 20:37:18 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/26 20:33:16 by jpancorb         ###   ########.fr       */
+/*   Created: 2024/03/26 20:04:36 by jpancorb          #+#    #+#             */
+/*   Updated: 2024/03/26 21:57:58 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main(int argc, char **argv)
+void	fractal_init(t_fractal *fractal)
 {
-	t_fractal	fractal;
-	
-    if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)
-		|| argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-    {
-		fractal.name = argv[1];
-		fractal_init(&fractal);
-		fractal_render(&fractal);
-		mlx_loop(fractal.mlx_connection);
+	fractal->mlx_connection = mlx_init();
+	if (!fractal->mlx_connection)
+		malloc_error(); // TO DO
+	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, 
+											WITH, HEIGHT, fractal->name);
+	if (!fractal->mlx_window)
+	{
+		mlx_destroy_image//what? no lo encuentro
 	}
-    else
-    {
-        ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
-        exit(EXIT_FAILURE);
-    }
-    return (0);
 }

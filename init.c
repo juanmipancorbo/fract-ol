@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:04:36 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/28 21:50:43 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:55:00 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,21 @@ static void	malloc_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	data_init(t_fractal *fractal)
+static void	data_init(t_fractal *fractal)
 {
 	fractal->scape_value = 4;
 	fractal->iterations_definition = 42;
+	fractal->shift_x = 0.0;
+	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
+} 
+
+static void	events_init(t_fractal *fractal)
+{
+	mlx_hook(fractal->mlx_window, 02, (1L<<0), key_handler, fractal);
+	mlx_hook(fractal->mlx_window, 04, (1L<<2), mouse_handler, fractal);
+	mlx_hook(fractal->mlx_window, 17, (1L<<17), close_handler, fractal);
+	mlx_hook(fractal->mlx_window, 06, (1L<<6), julia_mouse, fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -48,5 +59,6 @@ void	fractal_init(t_fractal *fractal)
 												&fractal->img.bits_per_pixel, 
 												&fractal->img.line_len, 
 												&fractal->img.endian);
+	events_init(fractal);
 	data_init(fractal);
 }	

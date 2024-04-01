@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:21:06 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/25 21:37:46 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:55:04 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,32 @@ void	ft_putstr_fd(char *s, int fd)
 	while (s[i])
 		i++;
 	write(fd, s, i);
+}
+
+double	ft_atof(const char *str)
+{
+	double	pow;
+	int		sign;
+	long	int_part;
+	double	dbl_part;
+	
+	pow = 1;
+	sign = 1;
+	int_part = 0;
+	dbl_part = 0;
+	while (*str == ' ' || (*str > 8 && *str < 14))
+		str++;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			sign = -1;
+	while (*str >= '0' && *str <= '9')
+		int_part = (int_part * 10) + (*str++ - 48);
+	if (*str == '.')
+		str++;
+	while (*str)
+	{
+		pow /= 10;
+		dbl_part = dbl_part + (*str++ - 48) * pow;
+	}
+	return ((int_part + dbl_part) * sign);
 }

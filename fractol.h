@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:45:44 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/28 21:50:45 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:55:02 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 
 #define	WITH	800
 #define HEIGHT	800
+
+#define	ESC		53
+#define	LEFT	123
+#define	RIGHT	124
+#define	UP		126
+#define	DOWN	125
+#define PLUS	24
+#define MINUS	27
 
 /* ************************************************************************** */
 /*                                 COLOURS                                    */
@@ -72,6 +80,11 @@ typedef struct	s_fractal
 	t_img	img;
 	double	scape_value;
 	int		iterations_definition;
+	double	shift_x;
+	double	shift_y;
+	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }				t_fractal;
 
 /* ************************************************************************** */
@@ -79,12 +92,17 @@ typedef struct	s_fractal
 /* ************************************************************************** */
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		ft_putstr_fd(char *s, int fd);
+double		ft_atof(const char *str);
 
 /* ************************************************************************** */
 /*                               FUNCTIONS                                    */
 /* ************************************************************************** */
 void		fractal_init(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
+int			key_handler(int keysym, t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
+int			mouse_handler(int button, int x, int y, t_fractal *fractal);
+int			julia_mouse(int x, int y, t_fractal *fractal);
 
 /* ************************************************************************** */
 /*                                 MATH                                       */

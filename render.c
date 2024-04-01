@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:53:35 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/28 21:58:33 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:55:05 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;  
 }
 
+static void	mandel_or_julia(t_complex *z, t_complex *c, t_fractal *fractal)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		c->x = fractal->julia_x;
+		c->y = fractal->julia_y;
+	}
+	else
+	{
+		c->x = z->x;
+		c->y = z->y;
+	} 
+}
+
 static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
@@ -28,13 +42,10 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			colour;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0; 
-
-	c.x = map(x, -2, +2, WITH);
-	c.y = map(y, +2, -2, HEIGHT); 
-
-	while (i < fractal->iterations_definition)
+	z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y; 
+	mandel_or_julia(&z, &c, fractal);
+	while (i < fractal->iterations_definition) 
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->scape_value)

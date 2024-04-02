@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/02 19:34:12 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:11:04 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	key_handler(int keysym, t_fractal *fractal)
 
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	if (button == 5)
+	if (button == 5 && x && y)
 		fractal->zoom *= 0.95; 
 	else if (button == 4)
 		fractal->zoom *= 1.05;

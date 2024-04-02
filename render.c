@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:53:35 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/01 18:20:37 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:10:45 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			colour;
 
 	i = 0;
-	z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y; 
+	//z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
+	z.x = ((+2.0 - -2.0) * x / WITH + -2.0) * fractal->zoom + fractal->shift_x;
+	//z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.y = ((-2.0 - +2.0) * y / HEIGHT + +2.0) * fractal->zoom + fractal->shift_y;
 	mandel_or_julia(&z, &c, fractal);
 	while (i < fractal->iterations_definition) 
 	{

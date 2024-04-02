@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/01 21:38:56 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:34:12 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	close_handler(t_fractal *fractal)
 //	mlx_destroy_image(fractal->mlx_connection, fractal->img.img_ptr);
 //	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 //	free(fractal->mlx_connection);
-	free((t_fractal *)fractal);
+	free(fractal->img.pixels_ptr);
 	exit(EXIT_SUCCESS); 
 }
 

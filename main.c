@@ -6,20 +6,28 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:37:18 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 21:20:44 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 22:59:39 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int main(int argc, char **argv)
+static void	put_error_text(int fd)
+{
+	ft_putstr_fd("Please enter: \n", fd);
+	ft_putstr_fd("\t\"./fractol mandelbrot\" or \n", fd);
+	ft_putstr_fd("\t\"./fractol julia <value_1> <value_2>\" or\n", fd);
+	ft_putstr_fd("\t\"./fractol burning_ship\"\n", fd);
+}
+
+int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
-	
-    if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
+
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 		|| (argc == 2 && !ft_strncmp(argv[1], "burning_ship", 12)))
-    {
+	{
 		fractal.name = argv[1];
 		if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 		{
@@ -30,10 +38,10 @@ int main(int argc, char **argv)
 		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_connection);
 	}
-    else
-    {
-        ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
-        exit(EXIT_FAILURE);
-    }
-    return (0);
+	else
+	{
+		put_error_text(STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:04:36 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 17:51:55 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 23:03:07 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
-} 
+}
 
 static void	events_init(t_fractal *fractal)
 {
-	mlx_hook(fractal->mlx_window, 02, (1L<<0), key_handler, fractal);
-	mlx_hook(fractal->mlx_window, 04, (1L<<2), mouse_handler, fractal);
-	mlx_hook(fractal->mlx_window, 17, (1L<<17), close_handler, fractal);
-	mlx_hook(fractal->mlx_window, 06, (1L<<6), julia_mouse, fractal);
+	mlx_hook(fractal->mlx_window, 02, (1L << 0), key_handler, fractal);
+	mlx_hook(fractal->mlx_window, 04, (1L << 2), mouse_handler, fractal);
+	mlx_hook(fractal->mlx_window, 17, (1L << 17), close_handler, fractal);
+	mlx_hook(fractal->mlx_window, 06, (1L << 6), julia_mouse, fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -40,8 +40,8 @@ void	fractal_init(t_fractal *fractal)
 	fractal->mlx_connection = mlx_init();
 	if (!fractal->mlx_connection)
 		malloc_error();
-	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, 
-										WITH, HEIGHT, fractal->name);
+	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
+			WITH, HEIGHT, fractal->name);
 	if (!fractal->mlx_window)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
@@ -55,10 +55,9 @@ void	fractal_init(t_fractal *fractal)
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, 
-												&fractal->img.bits_per_pixel, 
-												&fractal->img.line_len, 
-												&fractal->img.endian);
+	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
+			&fractal->img.bits_per_pixel, &fractal->img.line_len,
+			&fractal->img.endian);
 	events_init(fractal);
 	data_init(fractal);
-}	
+}

@@ -6,15 +6,15 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 17:52:12 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 23:02:46 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
- 
+
 int	close_handler(void)
 {
-	exit(EXIT_SUCCESS); 
+	exit(EXIT_SUCCESS);
 }
 
 /*	KeyPress prototype		*/
@@ -41,7 +41,7 @@ int	key_handler(int keysym, t_fractal *fractal)
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
 	if (button == 5 && x && y)
-		fractal->zoom *= 0.95; 
+		fractal->zoom *= 0.95;
 	else if (button == 4)
 		fractal->zoom *= 1.05;
 	fractal_render(fractal);
@@ -53,8 +53,10 @@ int	julia_mouse(int x, int y, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		fractal->julia_x = map(x, -2, +2, WITH) * fractal->zoom + fractal->shift_x;
-		fractal->julia_y = map(y, +2, -2, HEIGHT) * fractal->zoom + fractal->shift_y;
+		fractal->julia_x = map(x, -2, +2, WITH)
+			* fractal->zoom + fractal->shift_x;
+		fractal->julia_y = map(y, +2, -2, HEIGHT)
+			* fractal->zoom + fractal->shift_y;
 		fractal_render(fractal);
 	}
 	return (0);

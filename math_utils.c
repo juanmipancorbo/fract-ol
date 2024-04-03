@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:07:06 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/03/31 20:55:06 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 23:03:35 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 double	map(double unscaled_num, double new_min, double new_max, double old_max)
 {
 	return ((new_max - new_min) * unscaled_num / old_max + new_min);
-} 
+}
 
 /*	vector addition		*/
 t_complex	sum_complex(t_complex z1, t_complex z2)
@@ -37,5 +37,5 @@ t_complex	square_complex(t_complex z)
 
 	result.x = (z.x * z.x) - (z.y * z.y);
 	result.y = 2 * z.x * z.y;
-	return (result); 
+	return (result);
 }

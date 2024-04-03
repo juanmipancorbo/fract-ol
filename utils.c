@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:21:06 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/01 18:20:39 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 23:03:26 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double	ft_atof(const char *str)
 	int		sign;
 	long	int_part;
 	double	dbl_part;
-	
+
 	pow = 1;
 	sign = 1;
 	int_part = 0;

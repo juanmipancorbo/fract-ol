@@ -5,28 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/02 18:52:24 by jpancorb          #+#    #+#              #
-#    Updated: 2024/04/02 19:24:07 by jpancorb         ###   ########.fr        #
+#    Created: 2024/04/02 17:18:46 by jpancorb          #+#    #+#              #
+#    Updated: 2024/04/03 17:46:19 by jpancorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/02 17:18:46 by jpancorb          #+#    #+#              #
-#    Updated: 2024/04/02 18:36:07 by jpancorb         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#	add to mlx Makefile to silence warning messages
+#	$(OBJ): $(SRC)
+#		@$(CC) -c $(CFLAGS) $^
 
 NAME	= fractol
 SRCS	= events.c init.c main.c math_utils.c render.c utils.c
 HEADER	= fractol.h
 MLX		= mlx/libmlx.a
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra 
 
 OBJS	= $(SRCS:.c=.o)
 

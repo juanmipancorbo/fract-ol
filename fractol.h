@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:45:44 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/02 23:10:56 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:46:16 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ double		ft_atof(const char *str);
 void		fractal_init(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
 int			key_handler(int keysym, t_fractal *fractal);
-int			close_handler(t_fractal *fractal);
+int			close_handler(void);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
 int			julia_mouse(int x, int y, t_fractal *fractal);
 

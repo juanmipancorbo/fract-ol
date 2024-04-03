@@ -6,18 +6,14 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/02 23:11:04 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:46:17 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
  
-int	close_handler(t_fractal *fractal)
+int	close_handler(void)
 {
-//	mlx_destroy_image(fractal->mlx_connection, fractal->img.img_ptr);
-//	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-//	free(fractal->mlx_connection);
-	free(fractal->img.pixels_ptr);
 	exit(EXIT_SUCCESS); 
 }
 
@@ -25,7 +21,7 @@ int	close_handler(t_fractal *fractal)
 int	key_handler(int keysym, t_fractal *fractal)
 {
 	if (keysym == ESC)
-		close_handler(fractal);
+		close_handler();
 	else if (keysym == LEFT)
 		fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == RIGHT)

@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:45:44 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 17:46:16 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/03 18:33:36 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@
 #define MAGENTA     0xFF00FF
 #define CYAN        0x00FFFF
 #define WHITE       0xFFFFFF
-
 #define MAGENTA         0xFF00FF
 #define YELLOW          0xFFFF00
+#define BSSCOLOUR		0xFCBE11
 #define CYAN            0x00FFFF
 #define ORANGE          0xFF4500
 #define CHARTREUSE      0x7FFF00

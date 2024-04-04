@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:04:36 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/04 18:38:58 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:32:54 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,15 @@ void	fractal_init(t_fractal *fractal)
 	if (!fractal->mlx_connection)
 		malloc_error();
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
-			WITH, HEIGHT, fractal->name);
+			WIDTH, HEIGHT, fractal->name);
 	if (!fractal->mlx_window)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection, WITH, HEIGHT);
+	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
+			WIDTH, HEIGHT);
 	if (!fractal->img.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);

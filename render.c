@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:53:35 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/04 18:38:48 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:31:32 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	handle_pixel_mandelbrot(int x, int y, t_fractal *fractal)
 	int			colour;
 
 	i = 0;
-	z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
+	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	c.x = z.x;
 	c.y = z.y;
@@ -54,7 +54,7 @@ static void	handle_pixel_julia(int x, int y, t_fractal *fractal)
 	int			colour;
 
 	i = 0;
-	z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
+	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	c.x = fractal->julia_x;
 	c.y = fractal->julia_y;
@@ -80,7 +80,7 @@ static void	handle_pixel_bonus(int x, int y, t_fractal *fractal)
 	int			colour;
 
 	i = 0;
-	z.x = (map(x, -2, +2, WITH) * fractal->zoom) + fractal->shift_x;
+	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map(y, -2, +2, HEIGHT) * fractal->zoom) - fractal->shift_y;
 	c.x = z.x;
 	c.y = z.y;
@@ -110,13 +110,13 @@ void	fractal_render(t_fractal *fractal)
 	{
 		x = -1;
 		if (!ft_strncmp(fractal->name, "mandelbrot", 10))
-			while (++x < WITH)
+			while (++x < WIDTH)
 				handle_pixel_mandelbrot(x, y, fractal);
 		if (!ft_strncmp(fractal->name, "julia", 5))
-			while (++x < WITH)
+			while (++x < WIDTH)
 				handle_pixel_julia(x, y, fractal);
 		else
-			while (++x < WITH)
+			while (++x < WIDTH)
 				handle_pixel_bonus(x, y, fractal);
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,

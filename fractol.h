@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:45:44 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/04 18:38:44 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:31:29 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 # include "mlx/mlx.h"
 
-# define WITH	600
+# define WIDTH	600
 # define HEIGHT	600
 # define ESC	53
 # define LEFT	123

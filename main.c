@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:37:18 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/04 18:48:10 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:33:00 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	put_error_text(int fd)
 	ft_putstr_fd("Please enter: \n", fd);
 	ft_putstr_fd("\t\"./fractol mandelbrot\" or \n", fd);
 	ft_putstr_fd("\t\"./fractol julia <value_1> <value_2>\" or\n", fd);
+	ft_putstr_fd("\t\"./fractol julia_mouse\" or\n", fd);
 	ft_putstr_fd("\t\"./fractol burning_ship\"\n", fd);
 }
 

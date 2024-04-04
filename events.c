@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/04 19:10:03 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:31:43 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	close_handler(t_fractal *fractal)
 	exit(EXIT_SUCCESS);
 }
 
-/*	KeyPress prototype		*/
 int	key_handler(int keysym, t_fractal *fractal)
 {
 	if (keysym == ESC)
@@ -49,20 +48,28 @@ int	key_handler(int keysym, t_fractal *fractal)
 
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	if (button == 5 && x && y)
+	if (button == 5)
+	{
 		fractal->zoom *= 0.75;
+		fractal->shift_x = map(x, -2, +2, WIDTH)
+			* fractal->zoom + fractal->shift_x;
+	}
 	else if (button == 4)
+	{
 		fractal->zoom *= 1.25;
+		fractal->shift_y = map(y, +2, -2, HEIGHT)
+			* fractal->zoom + fractal->shift_y;
+	}
 	fractal_render(fractal);
 	return (0);
 }
 
-/*	To change julia with mouse		*/
+/*	To change julia WIDTH mouse		*/
 int	julia_mouse(int x, int y, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia_mouse", 11))
 	{
-		fractal->julia_x = map(x, -2, +2, WITH)
+		fractal->julia_x = map(x, -2, +2, WIDTH)
 			* fractal->zoom + fractal->shift_x;
 		fractal->julia_y = map(y, +2, -2, HEIGHT)
 			* fractal->zoom + fractal->shift_y;

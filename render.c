@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 19:53:35 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 23:03:17 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:38:48 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	handle_pixel_bonus(int x, int y, t_fractal *fractal)
 		}
 		++i;
 	}
-	my_pixel_put(x, y, &fractal->img, BSSCOLOUR);
+	my_pixel_put(x, y, &fractal->img, WHITE);
 }
 
 void	fractal_render(t_fractal *fractal)

@@ -6,17 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:04:36 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 23:03:07 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:38:58 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static void	malloc_error(void)
-{
-	perror("Malloc problems");
-	exit(EXIT_FAILURE);
-}
 
 static void	data_init(t_fractal *fractal)
 {
@@ -27,12 +21,29 @@ static void	data_init(t_fractal *fractal)
 	fractal->zoom = 1.0;
 }
 
+static void	data_init_bonus(t_fractal *fractal)
+{
+	fractal->scape_value = 4;
+	fractal->iterations_definition = 102;
+	fractal->shift_x = -1.761233;
+	fractal->shift_y = 0.021584;
+	fractal->zoom = 0.037404;
+}
+
 static void	events_init(t_fractal *fractal)
 {
 	mlx_hook(fractal->mlx_window, 02, (1L << 0), key_handler, fractal);
 	mlx_hook(fractal->mlx_window, 04, (1L << 2), mouse_handler, fractal);
 	mlx_hook(fractal->mlx_window, 17, (1L << 17), close_handler, fractal);
 	mlx_hook(fractal->mlx_window, 06, (1L << 6), julia_mouse, fractal);
+}
+
+static void	mandatory_or_bonus(t_fractal *fractal)
+{
+	if (!ft_strncmp(fractal->name, "burning_ship", 12))
+		data_init_bonus(fractal);
+	else
+		data_init(fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -59,5 +70,5 @@ void	fractal_init(t_fractal *fractal)
 			&fractal->img.bits_per_pixel, &fractal->img.line_len,
 			&fractal->img.endian);
 	events_init(fractal);
-	data_init(fractal);
+	mandatory_or_bonus(fractal);
 }

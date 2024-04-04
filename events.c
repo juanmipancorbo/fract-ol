@@ -6,14 +6,16 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:09:46 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 23:02:46 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:10:03 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close_handler(void)
+int	close_handler(t_fractal *fractal)
 {
+	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
+	free(fractal->mlx_connection);
 	exit(EXIT_SUCCESS);
 }
 
@@ -21,7 +23,7 @@ int	close_handler(void)
 int	key_handler(int keysym, t_fractal *fractal)
 {
 	if (keysym == ESC)
-		close_handler();
+		close_handler(fractal);
 	else if (keysym == LEFT)
 		fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == RIGHT)
@@ -34,6 +36,13 @@ int	key_handler(int keysym, t_fractal *fractal)
 		fractal->iterations_definition += 10;
 	else if (keysym == MINUS)
 		fractal->iterations_definition -= 10;
+	else if (keysym == PRINT)
+	{
+		printf("Iter: %d\n", fractal->iterations_definition);
+		printf("Zoom: %f\n", fractal->zoom);
+		printf("Shift_x: %f\n", fractal->shift_x);
+		printf("Shift_y: %f\n", fractal->shift_y);
+	}
 	fractal_render(fractal);
 	return (0);
 }
@@ -41,9 +50,9 @@ int	key_handler(int keysym, t_fractal *fractal)
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
 	if (button == 5 && x && y)
-		fractal->zoom *= 0.95;
+		fractal->zoom *= 0.75;
 	else if (button == 4)
-		fractal->zoom *= 1.05;
+		fractal->zoom *= 1.25;
 	fractal_render(fractal);
 	return (0);
 }
@@ -51,7 +60,7 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 /*	To change julia with mouse		*/
 int	julia_mouse(int x, int y, t_fractal *fractal)
 {
-	if (!ft_strncmp(fractal->name, "julia", 5))
+	if (!ft_strncmp(fractal->name, "julia_mouse", 11))
 	{
 		fractal->julia_x = map(x, -2, +2, WITH)
 			* fractal->zoom + fractal->shift_x;

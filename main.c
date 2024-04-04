@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:37:18 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 22:59:39 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:48:10 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+		|| (argc == 2 && !ft_strncmp(argv[1], "julia_mouse", 11))
 		|| (argc == 2 && !ft_strncmp(argv[1], "burning_ship", 12)))
 	{
 		fractal.name = argv[1];

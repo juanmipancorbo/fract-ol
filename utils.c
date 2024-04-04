@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 21:21:06 by jpancorb          #+#    #+#             */
-/*   Updated: 2024/04/03 23:03:26 by jpancorb         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:38:51 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ double	ft_atof(const char *str)
 		dbl_part = dbl_part + (*str++ - 48) * pow;
 	}
 	return ((int_part + dbl_part) * sign);
+}
+
+void	malloc_error(void)
+{
+	perror("Malloc problems");
+	exit(EXIT_FAILURE);
 }
